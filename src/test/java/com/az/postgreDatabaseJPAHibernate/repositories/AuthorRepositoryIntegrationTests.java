@@ -81,5 +81,42 @@ public class AuthorRepositoryIntegrationTests {
 
     }
 
+    @Test
+    public void testGetAuthorAgeLessThan(){
+        Author authorA = TestDataUtility.createNewAuthorA();
+        Author authorB = TestDataUtility.createNewAuthorB();
+        Author authorC = TestDataUtility.createNewAuthorC();
+
+        //save
+        underTest.save(authorA);
+        underTest.save(authorB);
+        underTest.save(authorC);
+
+        //Call the method, expect author B and C
+        Iterable<Author> result = underTest.ageLessThan(50);
+
+        assertThat(result).containsExactly(authorB,authorC);
+
+
+    }
+
+    //Custom query using HQL and @Query annotation
+    @Test
+    public void testGetAuthorAgeGreaterThan(){
+        Author authorA = TestDataUtility.createNewAuthorA();
+        Author authorB = TestDataUtility.createNewAuthorB();
+        Author authorC = TestDataUtility.createNewAuthorC();
+
+        //save
+        underTest.save(authorA);
+        underTest.save(authorB);
+        underTest.save(authorC);
+
+        //Call the method, expect author B and C
+        Iterable<Author> result = underTest.findAuthorWithAgeGreaterThan(50);
+
+        assertThat(result).containsExactly(authorA);
+    }
+
 
 }
