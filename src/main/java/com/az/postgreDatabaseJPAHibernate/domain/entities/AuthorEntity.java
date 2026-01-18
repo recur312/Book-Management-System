@@ -1,4 +1,4 @@
-package com.az.postgreDatabaseJPAHibernate.domain;
+package com.az.postgreDatabaseJPAHibernate.domain.entities;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @Entity //labels this object as an entity that can be used with spring data jpa
 @Table(name = "authors")//map entity to a database table
-public class Author {
+public class AuthorEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "author_id_seq") //generate id automatically
